@@ -1274,7 +1274,8 @@ public class Metadata
                         switch (kvp[0].Trim())
                         {
                             case "Steps":
-                                fileParameters.Steps = int.Parse(kvp[1].Trim(), CultureInfo.InvariantCulture);
+                                if (int.TryParse(kvp[1].Trim(), out int steps))
+                                    fileParameters.Steps = steps;
                                 break;
                             case "Sampler":
                                 fileParameters.Sampler = kvp[1].Trim();
